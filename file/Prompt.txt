@@ -1,0 +1,102 @@
+Prompt:
+
+Task:
+You need to create an application that manages entities, methods, and their corresponding arguments. The application should dynamically match entity columns with method arguments and set the appropriate data type for each argument based on the entity's column data type. If the argument's column is not found in the entity, the argument's data type should default to Object.
+
+Entity Structure:
+
+EntityClass represents an entity, such as User, Employee, or Payment. Each entity has a list of columns defined by ColumbName. Each ColumbName consists of:
+
+columName: The name of the column (e.g., id, name, confirm).
+
+dataTypes: The data type of the column (e.g., String, Long, Boolean).
+
+Methods: Each entity can have multiple methods, such as createUser, deleteUser, createPayment, confirmPayment. Each method has a list of arguments (ArgumentOfMethod), each of which has:
+
+argumentName: The name of the argument (e.g., id, username, confirm).
+
+argumentDataType: The expected data type of the argument.
+
+Phase 1: Define Entities:
+
+Create entities like User, Employee, and Payment.
+
+Define columns for each entity, including types like Long, String, Boolean, etc.
+
+Phase 2: Define Methods:
+
+For each entity, define the methods like createUser, deleteUser, createPayment, confirmPayment.
+
+Specify the arguments for each method (e.g., id as Long, username as String).
+
+Phase 3: Matching Arguments and Columns:
+
+Check if an argument name exists in the entity's columns.
+
+If a match is found, set the argument's data type to the column's data type.
+
+If no match is found, set the argument's data type to Object (default).
+
+Handle case sensitivity correctly (do not use equalsIgnoreCase; match the names exactly).
+
+Special Consideration:
+
+If a method has an argument that corresponds to a column name in the entity (e.g., confirm in Payment), set the argument's data type to the column's data type (Boolean in this case).
+
+If the column does not exist in the entity, default the argument's type to Object.
+
+Final Output:
+
+After processing, print out the entity names, methods, and arguments along with their correctly assigned data types.
+
+Example Entities & Methods:
+
+Entities:
+
+User: Columns like id (Long), name (String), email (String), username (String).
+
+Employee: Columns like salary (Long), name (String), address (Text).
+
+Payment: Columns like confirm (Boolean).
+
+Methods:
+
+User:
+
+createUser: Arguments: id (Long), username (String).
+
+deleteUser: Arguments: id (Long).
+
+Payment:
+
+createPayment: Arguments: confirm (Boolean).
+
+confirmPayment: Arguments: confirm (Boolean).
+
+Logic:
+
+For each argument, check if a column exists with the same name in the corresponding entity.
+
+If found, set the argument's data type to the matching column's type.
+
+If not found, set the argument's data type to Object.
+
+Outcome:
+
+The system should correctly match columns with arguments and handle cases where a column is missing by assigning the default type (Object).
+
+Example output:
+
+createUser method should have the argument id set to Long and username set to String.
+
+confirmPayment should have the argument confirm set to Boolean, based on the confirm column in Payment.
+
+Final Code Requirements:
+
+Implement classes for EntityClass, ColumbName, ArgumentOfMethod, ListMethods, EntityOfMethod.
+
+Implement logic to dynamically match arguments to columns in entities.
+
+Ensure case-sensitive column matching.
+
+Default argument data type to Object if column is not found.
